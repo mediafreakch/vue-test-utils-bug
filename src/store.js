@@ -5,10 +5,10 @@ Vue.use(Vuex);
 
 const apiMock = {
   Chart: {
-    title: "I am a Chart"
+    title: "Hello from Chart"
   },
   Dashboard: {
-    items: ["Chart"],
+    items: ["Chart", "Chart", "Chart"],
     title: "I am a Dashboard"
   }
 };
@@ -26,12 +26,12 @@ export const store = new Vuex.Store({
     }
   },
   getters: {
-    getViewInfo: state => kind => state.viewInfos[kind]
+    viewInfo: state => kind => state.viewInfos[kind]
   },
   actions: {
     async fetchViewInfo({ commit }, kind) {
       setTimeout(() => {
-        commit(apiMock[kind]);
+        commit("addViewInfo", { data: apiMock[kind], kind });
       }, 100);
     }
   }

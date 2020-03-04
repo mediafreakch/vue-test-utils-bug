@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <img width="25%" src="./assets/logo.png">
-    <HelloWorld msg="Hello Vue in CodeSandbox!" />
+    <GenericView kind="Dashboard"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import Vue from 'vue'
+import GenericView from "./components/GenericView";
 
-export default {
+export default Vue.extend({
   name: "App",
   components: {
-    HelloWorld
+    GenericView
   }
-};
+});
 </script>
 
 <style>

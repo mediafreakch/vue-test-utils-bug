@@ -6,30 +6,35 @@ import Chart from "./Chart.vue";
 export default Vue.extend({
   name: "GenericView",
   props: ["kind"],
-  async created() {
+  created: async function() {
     await this.fetchViewInfo(this.kind);
   },
   methods: {
-    fetchViewInfo(kind) {
+    fetchViewInfo: function(kind) {
       this.$store.dispatch("fetchViewInfo", kind);
     }
   },
   computed: {
-    viewInfo() {
+    viewInfo: function() {
       return this.$store.getters.viewInfo(this.kind);
     }
   },
   render: function(h) {
-    switch (this.kind) {
-      case "Chart":
-        return h(Chart, { props: { ...this.$props, viewInfo: this.viewInfo } });
-      case "Dashboard":
-        return h(Dashboard, {
-          props: { ...this.$props, viewInfo: this.viewInfo }
-        });
-      default:
-        return h("strong", "Unsupported type!");
+    if (this.viewInfo && this.kind) {
+      switch (this.kind) {
+        case "Chart":
+          return h(Chart, {
+            props: { ...this.$props, viewData: this.viewInfo }
+          });
+        case "Dashboard":
+          return h(Dashboard, {
+            props: { ...this.$props, viewData: this.viewInfo }
+          });
+        default:
+          return h("strong", "Unsupported type!");
+      }
     }
+    return h("span", "Loading");
   }
 });
 </script>

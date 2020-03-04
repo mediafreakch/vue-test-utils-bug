@@ -1,11 +1,12 @@
 <template>
-  <div>Hello I am a Chart</div>
+  <h2>{{ viewData.title }}</h2>
 </template>
 
 <script>
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "Chart"
+  name: "Chart",
+  props: ["viewData"]
 });
 </script>
