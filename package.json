@@ -11,7 +11,7 @@
   "dependencies": {
     "@vue/cli-plugin-babel": "4.1.1",
     "@vue/cli-plugin-unit-jest": "4.1.1",
-    "@vue/test-utils": "1.0.0-beta.29",
+    "@vue/test-utils": "^1.0.0-beta.32",
     "jest": "25.1.0",
     "vue": "^2.6.11",
     "vue-template-compiler": "2.6.11",
